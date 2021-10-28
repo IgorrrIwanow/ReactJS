@@ -5,10 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-export const Message = (props) => {
-    
-  return <p className="text">{props.text}</p>
-}
 
 ReactDOM.render(
   <React.StrictMode>

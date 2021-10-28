@@ -1,4 +1,4 @@
-import { Message } from './index.js'
+import { Message } from './components/Message'
 
 const text = "Какой-то текст"
 
