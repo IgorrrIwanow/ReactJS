@@ -1,15 +1,12 @@
   import React, {useState, useEffect} from "react";
+  import Form from "./components/Form";
+  import MessageList from "./components/MessageList";
 
 
 
 function App() {
   const [messageList, setMessageList] = useState([]);
-  const [value, setValue] = useState('');
-
-  const onChangeMessageInput = (event) => {
-    setValue(event.target.value);
-  }
-
+  
   const sendMessage = (author, text) => {
     const newMessageList = [...messageList];
     const newMessage = {
@@ -18,13 +15,6 @@ function App() {
     }
     newMessageList.push(newMessage);
     setMessageList(newMessageList);
-  }
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    sendMessage('user', value);
-
-    setValue('');
   }
 
   useEffect(()=>{
@@ -38,31 +28,14 @@ function App() {
       return;
     }
 
-    const timerId = setTimeout(()=>{
-      sendMessage("bot", "hello human");
-    }, 1500);
+    sendMessage("bot", "hello human");
 
-    return ()=>{
-      clearTimeout(timerId);
-    }
   }, [messageList]);
 
   return (
-    <div>
-      <h1>homeWork</h1>
-      <ul>
-        {messageList.map((item) => (
-          <li>
-            {item.author} - {item.text}
-          </li> 
-        ))}
-      </ul>
-      <form onSubmit={onSubmit}>
-        <input value={value} onChange={onChangeMessageInput} type="text"/>
-        <button type="submit">send</button>
-      </form>
-
-
+    <div>    
+      <Form sendMessage={sendMessage}/>
+      <MessageList messageList={messageList}/>
     </div>
     
   );
