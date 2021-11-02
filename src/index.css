@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.chatsList {
+    width: 30%;
+    background-color: #ccc;
+}
+
+.formContainer {
+    width: 70%;
+}

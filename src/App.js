@@ -1,8 +1,9 @@
   import React, {useState, useEffect} from "react";
   import Form from "./components/Form";
   import MessageList from "./components/MessageList";
-
-
+  import Header from "./components/Header";
+  import ChatList from "./components/ChatList";
+  import "./index.css";
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -10,6 +11,7 @@ function App() {
   const sendMessage = (author, text) => {
     const newMessageList = [...messageList];
     const newMessage = {
+      id: Date.now(),
       author,
       text
     }
@@ -33,9 +35,37 @@ function App() {
   }, [messageList]);
 
   return (
-    <div>    
-      <Form sendMessage={sendMessage}/>
-      <MessageList messageList={messageList}/>
+    <div>
+      <Header />
+      <div className="container">
+        <div className="chatsList">
+          
+        <ChatList list={[
+            {
+              name: "Alex",
+              id: "1"
+            },
+            {
+              name: "Petr",
+              id: "1"
+            },
+            {
+              name: "Ivan",
+              id: "1"
+            },{
+              name: "Sergey",
+              id: "1"
+            }
+          ]}/>
+        </div>
+        <div className="formContainer">
+          <MessageList messageList={messageList}/> 
+          <Form sendMessage={sendMessage}/>           
+        </div>
+        
+      </div>
+      
+               
     </div>
     
   );

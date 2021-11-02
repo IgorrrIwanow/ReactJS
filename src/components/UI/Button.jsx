@@ -1,10 +1,17 @@
-import React from "react";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
-const Button = () => {
+
+export default function IconLabelButton() {
 
     return (
-        <button type="submit">send</button>
-    )
+        <Button 
+            variant="contained" 
+            endIcon={<SendIcon />}
+            type="submit"
+        >
+            Send
+        </Button>
+    );
 }
-
-export default Button
