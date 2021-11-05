@@ -1,43 +1,34 @@
-  import React, {useState, useEffect} from "react";
-  import Header from "./components/Header";
+  import React from "react";
+  import { Switch, Route, Redirect } from 'react-router-dom';
   import "./index.css";
-  import ChatContainer from "./components/ChatContainer";
+  import Header from "./components/Header";
+  import HomePage from "./pages/HomePage";
+  import Profile from "./pages/Profile";
+  import Chats from "./pages/Chats";
+  import NavBar from "./components/NavBar";
 
 function App() {
-  const [messageList, setMessageList] = useState([]);
   
-  const sendMessage = (author, text) => {
-    const newMessageList = [...messageList];
-    const newMessage = {
-      id: Date.now(),
-      author,
-      text
-    }
-    newMessageList.push(newMessage);
-    setMessageList(newMessageList);
-  }
-
-  useEffect(()=>{
-    if (messageList.length === 0) {
-      return;
-    }
-
-    const tail = messageList[messageList.length-1];
-
-    if (tail.author === "bot") {
-      return;
-    }
-
-    sendMessage("bot", "hello human");
-
-  }, [messageList]);
 
   return (
     <div>
       <Header />
-      <ChatContainer messageList={messageList} sendMessage={sendMessage}/>
+      <NavBar />
+      <Switch>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/chats">
+          <Chats />
+        </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+        <Redirect to="/chats"/>
+      </Switch>
+      
+      
     </div>
-    
   );
 }
 
