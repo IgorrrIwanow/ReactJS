@@ -26,8 +26,6 @@ function App() {
         </Route>
         <Redirect to="/chats"/>
       </Switch>
-      
-      
     </div>
   );
 }
