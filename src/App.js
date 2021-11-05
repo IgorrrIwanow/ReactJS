@@ -1,9 +1,7 @@
   import React, {useState, useEffect} from "react";
-  import Form from "./components/Form";
-  import MessageList from "./components/MessageList";
   import Header from "./components/Header";
-  import ChatList from "./components/ChatList";
   import "./index.css";
+  import ChatContainer from "./components/ChatContainer";
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -37,22 +35,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="container">
-        <div className="chatsList">
-          <ChatList list={[{name: "Alex", id: "1"},
-                         {name: "Petr", id: "2"},
-                         {name: "Ivan", id: "3"},
-                         {name: "Sergey", id: "4"}
-                       ]}/>
-        </div>
-        <div className="formContainer">
-          <MessageList messageList={messageList}/> 
-          <Form sendMessage={sendMessage}/>           
-        </div>
-        
-      </div>
-      
-               
+      <ChatContainer messageList={messageList} sendMessage={sendMessage}/>
     </div>
     
   );
