@@ -7,8 +7,22 @@
 .chatsList {
     width: 30%;
     background-color: #ccc;
+    min-height: 100px;
 }
 
 .formContainer {
     width: 70%;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px 10px 50px;
+    box-sizing: border-box;
+    background-color: rgb(50, 50, 145);
+}
+
+.navBar-link {
+    text-decoration: none;
+    color: white;
 }
