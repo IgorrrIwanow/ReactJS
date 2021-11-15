@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {TOGGLE_SHOW_PROFILE} from "../store/profile/action";
+import {TOGGLE_SHOW_PROFILE} from "../../store/profile/action";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -18,4 +18,3 @@ const Profile = () => {
 }
 
 export default Profile;
-

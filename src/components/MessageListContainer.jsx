@@ -3,7 +3,7 @@ import MessageList from './MessageList';
 import Form from "./Form";
 
 const MessageListContainer = () => {
-    const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState([]);
   
   const sendMessage = (author, text) => {
     const newMessageList = [...messageList];

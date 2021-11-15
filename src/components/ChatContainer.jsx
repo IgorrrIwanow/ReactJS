@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
 import ChatList from "./ChatList";
 import MessageListContainer from './MessageListContainer';
 import { Switch, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeMessageByChatId } from '../store/messages/actions';
+
 
 const ChatContainer = ({messageList,sendMessage}) => {
+    
+
     return (
         <div className="container">
             <ChatList list={[{ name: "Alex", id: "1" },
