@@ -9,5 +9,6 @@ const rootReducer = combineReducers({
     chats: chatsReducer
 })
 
-
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENTION__ && window.__REDUX_DEVTOOLS_EXTENTION__() 
+);

@@ -1,11 +1,13 @@
 import React, {useCallback, useEffect} from "react";
 import ChatList from "../../components/ChatList";
 import MessageListContainer from '../../components/MessageListContainer';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeMessageByChatId } from '../../store/messages/actions';
-import { getChatList } from '../../store/chats/selectors';
+import { getChatList, hasChatById } from '../../store/chats/selectors';
 import { createChat, removeChat, setChats } from '../../store/chats/actions';
+import { nanoid } from 'nanoid';
+import { CHATS } from "../../mockes/Chats"
 
 
 const Chats = ({messageList,sendMessage}) => {
@@ -16,18 +18,23 @@ const Chats = ({messageList,sendMessage}) => {
 
     const chats = useSelector(getChatList);
     const dispatch = useDispatch();
+    
 
     const onCreate = useCallback(()=>{
         dispatch(createChat({
-            id: Date.now(),
+            id: nanoid(),
             name: 'chatName'
         }),[])
     });
 
-    const onDelete = (chatId) => {
+    const onDelete = (chatId) => {  
         dispatch(removeChat(chatId));
         dispatch(removeMessageByChatId(chatId));
     }
+
+    useEffect(()=> {
+        dispatch(setChats(CHATS))
+    }, [])
 
 
     return (
